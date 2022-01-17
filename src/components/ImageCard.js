@@ -23,6 +23,31 @@ class ImageCard extends React.Component
 
     //handle like by toggling state
     handleLike() {
+        var liked_images = localStorage.getItem("likedImages").split(",");
+        var liked_images_date = localStorage.getItem("likedImageDate").split("~");
+        var liked_images_desc = localStorage.getItem("likedImageDesc").split("~");
+        var liked_images_title = localStorage.getItem("likedImageTitle").split("~");
+
+        if (!this.state.like_status)
+        {
+            liked_images.push(this.props.link);
+            liked_images_date.push(this.props.date);
+            liked_images_desc.push(this.props.desc);
+            liked_images_title.push(this.props.imgTitle);
+        }
+        else
+        {
+            liked_images = liked_images.filter(item => item !== this.props.link);
+            liked_images_date = liked_images_date.filter(item => item !== this.props.date);
+            liked_images_desc = liked_images_desc.filter(item => item !== this.props.desc);
+            liked_images_title = liked_images_title.filter(item => item !== this.props.imgTitle);
+        }
+
+        localStorage.setItem("likedImages", liked_images.join());
+        localStorage.setItem("likedImageDate", liked_images_date.join("~"));
+        localStorage.setItem("likedImageDesc", liked_images_desc.join("~"));
+        localStorage.setItem("likedImageTitle", liked_images_title.join("~"));
+
         this.setState(prevState => ({
             like_status: !prevState.like_status
         }))
@@ -67,11 +92,11 @@ class ImageCard extends React.Component
                             </div>
                         </div>
                     </div>
-                    <div className="row">
+                    {(this.props.likeStatus !== '1') ? (<div className="row">
                         <div className="col">
                         <button className="btn btn-primary my-2" onClick={this.handleLike}>{this.state.like_status ? "Unlike" : "Like"}</button>
                         </div>
-                    </div>
+                    </div>) : <div></div>}
                     <div className="row">
                         <div className="col">
                             <div className="row">

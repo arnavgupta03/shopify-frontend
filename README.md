@@ -2,6 +2,8 @@
 
 Check the completed site by [clicking here](https://arnavgupta03.github.io/shopify-frontend/).
 
+[See the design considerations and process](https://docs.google.com/document/d/1tzX2u61zun3F07o1Lt4ryX1Z1BbMoInpt97B3TYqC8k/edit?usp=sharing).
+
 ## To run and build the project yourself
 
 The following section is taken from Create React App. In the project directory, you can run:
