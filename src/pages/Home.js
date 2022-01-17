@@ -36,7 +36,7 @@ class Home extends React.Component {
                             <div className="col-sm-8 col-md-4">
                                 {
                                     this.state.image_array.map((item, index) => {
-                                        return <div key={index} className="row"><ImageCard key={index} link={item.url} imgTitle={item.title} date={item.date}/></div>
+                                        return <div key={index} className="row"><ImageCard key={index} link={item.url} desc={item.explanation} imgTitle={item.title} date={item.date}/></div>
                                     })
                                 }
                             </div>
